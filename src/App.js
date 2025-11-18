@@ -6,7 +6,7 @@ function LiveDataDashboard() {
 
   useEffect(() => {
     // Connect to your WebSocket server
-    const ws = new ReconnectingWebSocket("wss://tatatest.onrender.com:8081");
+    const ws = new ReconnectingWebSocket("https://tatatest.onrender.com/");
 
     ws.onopen = () => {
       console.log("Connected to WebSocket server");
