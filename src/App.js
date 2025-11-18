@@ -1,58 +1,49 @@
 import React, { useEffect, useState } from "react";
-import ReconnectingWebSocket from "reconnecting-websocket";
+import { io } from "socket.io-client";
 
 function LiveDataDashboard() {
-  const [tagsData, setTagsData] = useState({}); // store by tag
+  const [tagsData, setTagsData] = useState({});
 
   useEffect(() => {
-    // Connect to your WebSocket server
-    const ws = new ReconnectingWebSocket("https://tatatest.onrender.com/");
+    // Connect to Socket.IO server
+    const socket = io("https://tatatest.onrender.com", {
+      transports: ["websocket"], // optional but recommended
+    });
 
-    ws.onopen = () => {
-      console.log("Connected to WebSocket server");
-    };
+    socket.on("connect", () => {
+      console.log("Connected with Socket.IO:", socket.id);
+    });
 
-    ws.onmessage = (event) => {
-      try {
-        const parsed = JSON.parse(event.data);
-        const packet = parsed.Packets[0];
-        if (packet.Type === "TagInformation") {
-          const tagId = packet.Data.Tag;
-          setTagsData((prev) => ({
-            ...prev,
-            [tagId]: packet.Data, // keep latest info per tag
-          }));
-        }
-      } catch (err) {
-        console.error("Failed to parse message:", err);
+    socket.on("pts2-data", (parsed) => {
+      const packet = parsed.Packets?.[0];
+      if (packet?.Type === "TagInformation") {
+        const tagId = packet.Data.Tag;
+        setTagsData((prev) => ({
+          ...prev,
+          [tagId]: packet.Data,
+        }));
       }
-    };
+    });
 
-    ws.onerror = (err) => {
-      console.error("WebSocket error:", err);
-    };
+    socket.on("connect_error", (err) => {
+      console.error("Socket connection error:", err);
+    });
 
-    return () => ws.close();
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h1>Live PTS2 Data</h1>
-      <table
-        style={{
-          borderCollapse: "collapse",
-          width: "100%",
-          textAlign: "left",
-        }}
-      >
+      <table style={{ borderCollapse: "collapse", width: "100%", textAlign: "left" }}>
         <thead>
           <tr style={{ backgroundColor: "#f2f2f2" }}>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>Tag</th>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>Name</th>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>Valid</th>
-            <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-              Payment Form
-            </th>
+            <th style={{ border: "1px solid #ddd", padding: "8px" }}>Payment Form</th>
             <th style={{ border: "1px solid #ddd", padding: "8px" }}>Present</th>
           </tr>
         </thead>
