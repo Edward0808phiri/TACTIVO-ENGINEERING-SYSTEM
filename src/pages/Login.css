@@ -1,0 +1,89 @@
+/* Background colors and layout */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, grey 0%, orange 70%, blue 100%);
+  font-family: Arial, sans-serif;
+  position: relative;
+  padding: 20px;
+}
+
+/* Top right logo */
+.login-header {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.fuel-icon {
+  width: 50px;
+  height: 50px;
+}
+
+/* Login box */
+.login-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-box label {
+  display: block;
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.checkbox-container span {
+  margin-left: 5px;
+  color: #555;
+}
+
+/* Button */
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.login-box button:hover {
+  background-color: darkorange;
+}
+
+/* Footer */
+footer {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}

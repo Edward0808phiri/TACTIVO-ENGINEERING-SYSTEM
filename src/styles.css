@@ -1,0 +1,137 @@
+/* MAIN LAYOUT */
+.app-container {
+  display: flex;
+  height: 100vh;
+  background: #f1f1f1;
+}
+
+/* SIDENAV */
+.sidenav {
+  width: 250px;
+  background: #2d2d2d;
+  color: white;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.sidenav.collapsed {
+  width: 70px;
+}
+
+.sidenav button {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  background: orange;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* DASHBOARD AREA */
+.dashboard {
+  flex: 1;
+  padding: 20px;
+}
+
+/* ALERT BOX */
+.alert-box {
+  background: purple;
+  color: white;
+  padding: 15px;
+  width: 250px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* GRAPHS PLACEHOLDER */
+.graph-box {
+  background: white;
+  padding: 20px;
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border-left: 5px solid orange;
+}
+.login-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #808080, #ff8c00 70%, #1e90ff);
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+/* Top-right fuel image */
+.fuel-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+}
+
+/* Login box */
+.login-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  width: 300px;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #ff8c00; /* orange title */
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.checkbox-container input {
+  margin-right: 10px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff8c00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background-color: #e67e00;
+}
+
+/* Footer */
+footer {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  color: white;
+}
+
+footer p {
+  margin: 2px;
+}
